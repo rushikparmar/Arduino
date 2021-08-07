@@ -12,6 +12,10 @@ void setup()
   Serial.begin(9600);
   delay(10);
   
+  WiFi.mode(WIFI_STA);        //This line hides the viewing of ESP as wifi hotspot
+  //WiFi.mode(WIFI_AP_STA);   //Both hotspot and client are enabled
+  //WiFi.mode(WIFI_AP);       //Only Access point
+  
   WiFi.begin(ssid, password);
   
   while (WiFi.status() != WL_CONNECTED) 
@@ -19,6 +23,10 @@ void setup()
     delay(500);
   }
   
+  Serial.println("");
+  Serial.print("Connected to ");
+  Serial.println(ssid);
+  Serial.print("IP address: ");
   Serial.println(WiFi.localIP());
 }
 
